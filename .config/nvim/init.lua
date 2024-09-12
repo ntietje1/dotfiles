@@ -1,2 +1,2 @@
-vim.o.number = true        -- Show line numbers
-vim.cmd('syntax on')       -- Enable syntax highlighting
+-- bootstrap lazy.nvim, LazyVim and your plugins
+require("config.lazy")
