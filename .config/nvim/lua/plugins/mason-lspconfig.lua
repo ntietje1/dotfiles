@@ -5,19 +5,53 @@ return {
       require("mason").setup()
     end
   },
-  {
+    {
     "williamboman/mason-lspconfig.nvim",
     config = function()
-      require("mason-lspconfig").setup()
+      local mason_lspconfig = require("mason-lspconfig")
+
+      -- Setup mason-lspconfig to automatically detect installed LSP servers
+      mason_lspconfig.setup()
+
+      -- Automatically configure installed LSP servers
+      mason_lspconfig.setup_handlers({
+        -- Default handler (for all installed servers)
+        function(server_name)
+          local lspconfig = require("lspconfig")
+          lspconfig[server_name].setup {}
+        end,
+
+        -- You can add custom setups for specific LSPs here if necessary
+        -- Example: custom setup for `lua_ls`
+        ["lua_ls"] = function()
+          require("lspconfig").lua_ls.setup {
+            settings = {
+              Lua = {
+                diagnostics = {
+                  globals = { "vim" },
+                },
+              },
+            },
+          }
+        end,
+      })
     end
   },
   {
     "neovim/nvim-lspconfig",
     config = function()
-      local lspconfig = require("lspconfig")
-            lspconfig.lua_ls.setup {}
-            lspconfig.pyright.setup {}
-            lspconfig.gopls.setup {}
+     -- local lspconfig = require("lspconfig")
+       --     lspconfig.lua_ls.setup {}
+         --   lspconfig.pyright.setup {}
+           -- lspconfig.gopls.setup {}
+    -- opts = {
+    --             diagnostics = {
+    --                 update_in_insert = true
+    --             },
+    --             codelens = {
+    --                 enabled = true
+    --             }
+    --         }
     end
   },
   {

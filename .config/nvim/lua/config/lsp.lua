@@ -51,7 +51,14 @@ local capabilities = require('cmp_nvim_lsp').default_capabilities()
 lspconfig.pyright.setup {
   capabilities = capabilities,
   on_attach = function(client, bufnr)
-    local opts = { noremap=true, silent=true }
+    local opts = {
+            noremap=true,
+            silent=true,
+            update_in_insert=true,
+            codelens = {
+                enabled = true
+            }
+        }
     local buf_set_keymap = function(...) vim.api.nvim_buf_set_keymap(bufnr, ...) end
 
     -- Mappings.
@@ -66,8 +73,43 @@ lspconfig.pyright.setup {
     buf_set_keymap('n', ']d', '<cmd>lua vim.diagnostic.goto_next()<CR>', opts)
   end
 }
+--
+-- local servers = {
+--     "arduino_language_server",
+--     "bashls",
+--     "cssls",
+--     "css_variables",
+--     "cssmodules_ls",
+--     "docker_compose_language_service",
+--     "dockerls",
+--     "eslint",
+--     "html",
+--     "jsonls",
+--     "kotlin_language_server",
+--     "lua_ls",
+--     "pyright",
+--     "tailwindcss",
+--     "terraformls",
+--     "vimls",
+--     "yamlls",
+--     -- Add more if needed
+-- }
+--
+-- for _, server in ipairs(servers) do
+--     lspconfig[server].setup {
+--         on_attach = function(client, bufnr)
+--             -- Only use the LSP's formatting if the server supports it
+--             if client.server_capabilities.documentFormattingProvider then
+--                 -- Auto-format on save
+--                 vim.api.nvim_create_autocmd("BufWritePre", {
+--                     buffer = bufnr,
+--                     callback = function()
+--                         vim.lsp.buf.format({ async = true })
+--                     end,
+--                 })
+--             end
+--         end,
+--     }
+-- end
 
--- Add additional language server configurations here, e.g.:
--- lspconfig.tsserver.setup{ capabilities = capabilities, ... }
--- lspconfig.sumneko_lua.setup{ capabilities = capabilities, ... }
 
