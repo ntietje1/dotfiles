@@ -24,13 +24,13 @@
 | -------- | ------- |
 | (in tree sitter window) :s  |  open a new vertical split window   |
 | (in tree sitter window) :S  |  open a new horizontal split window   |
-| <number> + k/j/h/l | move up/down/left/right by <number> (default 0) |
+| \<number\> + k/j/h/l | move up/down/left/right by \<number\> (default 0) |
 | ctrl + j/k | scroll up/down |
 | $ | go to end of line |
 | 0 | go to start of line |
 | ^ | go to start of line respecting blank characters |
-| f + <character> | find next in line |
-| / + <string> | find in file |
+| f + \<character\> | find next in line |
+| / + \<string\> | find in file |
 | ctrl + e | open neotree window |
 | ctrl + w | navigate around windows |
 
