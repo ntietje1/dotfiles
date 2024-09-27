@@ -8,4 +8,8 @@ class TestClass {
     test(i) {
         return i + 1
     }
+
+    test(i, j) {
+        return Int8Array.toString
+    }
 }
