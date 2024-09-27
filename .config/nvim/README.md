@@ -33,6 +33,13 @@
 | / + \<string\> | find in file |
 | ctrl + e | open neotree window |
 | ctrl + w | navigate around windows |
+| gd | go to definition |
+| gr | go to reference |
+| gi | go to implementation |
+| K | hover |
+| tab | scroll down autocomplete |
+| shift + tab | scroll up autocomplete |
+| return | accept autocomplete |
 
 
 
